@@ -6,8 +6,6 @@ file across CPU cores.
 I was intrigued by a question I was asked, and wanted to run an experiment on the benefit of doing such reads, as
 my previous experience with data processing was on compressed files that were difficult to read in parallel, such as bz2.
 
-Data for this project comes from here: https://chriswhong.com/open-data/foil_nyc_taxi/
-
 ## Approach & Implementation
 
 My approach is relatively straightforward. For the most part, I read from the same using varying number of cores,
@@ -55,7 +53,7 @@ beneficial to a point, which of course would depend on the hardware a program is
 ## Running
 
 To run this program, you would simply need to download the dataset, and change the `dataset_path` variable
-to the path of where you have the dataset downloaded.
+to the path of the file you want to test this on.
 
 
 
