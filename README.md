@@ -47,8 +47,8 @@ Based on my current understanding of storage devices, I would likely say that th
 interleaving of I/O requests. I wonder how much of this is tied to the fact that my laptop uses an SSD, however I hope to update this README once I get access to a computer with a Hard Drive soon. However, I would expect a much larger dropoff in performance due to how
 interleaved I/O requests might increase seek time, given that flash memory doesn't suffer from the same problem.
 
-Overall, the main conclusion I drew from this is that parallelizing reads across cores can be beneficial to a
-point, which of course would depend on the hardware.
+Overall, the main conclusion I drew from this is that parallelizing sequential reads across cores can be
+beneficial to a point, which of course would depend on the hardware a program is running on.
 
 ## Running
 
