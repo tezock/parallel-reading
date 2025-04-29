@@ -1,0 +1,59 @@
+# Parallel Reading Experiment
+
+The code in this repository mostly serves as an experiment to take a look at parallel reading from a
+file.
+
+I was intrigued by a question I was asked, and wanted to run an experiment on the benefit of doing such reads, as
+my previous experience with data processing was on compressed files that were difficult to read in parallel.
+
+Data for this project comes from here: https://chriswhong.com/open-data/foil_nyc_taxi/
+
+## Approach & Implementation
+
+My approach is relatively straightforward. For the most part, I read from the same using varying number of cores,
+and repeat this a given number of times for each core count to get an average of how long a workload
+takes given a certain number of cores.
+
+For the metrics below, I read the dataset 5 times for a given number of cores that I wanted to test. My
+computer has 10 cores, for reference.
+
+## Results & Metrics
+
+Below, I will present graphs showing the average time of reading the dataset, as well as the actual
+times from each iteration.
+
+I have additionally added on a graph tracking the CPU utilization as well (coming from the Activity Monitor
+app available on my laptop).
+
+### Average Time per Core Utilized
+<img src="averages.png" width="700px">
+
+### Results for each iteration
+<img src="iterations.png" width="700px">
+
+### CPU Utilization
+<img src="all_utilization.png" width="700px">
+
+## Reflections
+
+One thing that I found extremely interesting, is that despite the common heuristic that more cpu utilization is good,
+I found that the run which (on average) performed the best in time didn't necessarily have the best utilization
+of the CPU. Below, I have attached an image comparing the CPU utilization of the 3-core run compared to that of
+the 10-core run.
+
+<img src="extreme_utilization.png" width="700px">
+
+Based on my current understanding of storage devices, I would likely say that this is largely due to the
+scheduling algorithm that's used to send block requests to persistent storage, turning a sequential access
+(reading the dataset with one process) job into a combination of sequential and random accesses. I wonder how
+much of this is tied to the fact that my laptop uses an SSD, however I hope to update this README once I get access
+to a computer with a Hard Drive soon. However, I would expect a much larger dropoff in performance due to seek
+time, and flash memory doesn't suffer from the same problems.
+
+## Running
+
+To run this program, you would simply need to download the dataset, and change the `dataset_path` variable
+to the path of where you have the dataset downloaded.
+
+
+
