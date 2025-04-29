@@ -25,6 +25,8 @@ times from each iteration.
 I have additionally added on a graph tracking the CPU utilization as well (coming from the Activity Monitor
 app available on my laptop).
 
+[Spreadsheet link here!](https://docs.google.com/spreadsheets/d/1RppXfnqSIislLZfEpFmC9uiIDoP2APN4XNwJMD8iBNM/edit?usp=sharing)
+
 ### Average Time per Core Utilized
 <img src="averages.png" width="700px">
 
