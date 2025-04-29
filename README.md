@@ -12,12 +12,15 @@ My approach is relatively straightforward. For the most part, I read from the sa
 and repeat this a given number of times for each core count to get an average of how long a workload
 takes given a certain number of cores.
 
-For the metrics below, I read the dataset 5 times for a given number of cores that I wanted to test. My
+For the metrics below, I read the file 5 times for a given number of cores that I wanted to test. My
 computer has 10 cores, for reference.
+
+I additionally utiilized the 'multiprocessing' module for true parallelization, as the python GIL prevents
+'true' multithreading, and I just wanted to spin up a quick POC.
 
 ## Results & Metrics
 
-Below, I will present graphs showing the average time of reading the dataset, as well as the actual
+Below, I will present graphs showing the average time of reading the file, as well as the actual
 times from each iteration.
 
 I have additionally added on a graph tracking the CPU utilization as well (coming from the Activity Monitor
@@ -52,7 +55,7 @@ beneficial to a point, which of course would depend on the hardware a program is
 
 ## Running
 
-To run this program, you would simply need to download the dataset, and change the `dataset_path` variable
+To run this program, you would simply need to change the `dataset_path` variable
 to the path of the file you want to test this on.
 
 
