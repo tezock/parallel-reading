@@ -1,10 +1,10 @@
 # Parallel Reading Experiment
 
 The code in this repository mostly serves as an experiment to take a look at parallel reading from a
-file.
+file across CPU cores.
 
 I was intrigued by a question I was asked, and wanted to run an experiment on the benefit of doing such reads, as
-my previous experience with data processing was on compressed files that were difficult to read in parallel.
+my previous experience with data processing was on compressed files that were difficult to read in parallel, such as bz2.
 
 Data for this project comes from here: https://chriswhong.com/open-data/foil_nyc_taxi/
 
@@ -44,11 +44,11 @@ the 10-core run.
 <img src="extreme_utilization.png" width="700px">
 
 Based on my current understanding of storage devices, I would likely say that this is largely due to the
-scheduling algorithm that's used to send block requests to persistent storage, turning a sequential access
-(reading the dataset with one process) job into a combination of sequential and random accesses. I wonder how
-much of this is tied to the fact that my laptop uses an SSD, however I hope to update this README once I get access
-to a computer with a Hard Drive soon. However, I would expect a much larger dropoff in performance due to seek
-time, and flash memory doesn't suffer from the same problems.
+interleaving of I/O requests. I wonder how much of this is tied to the fact that my laptop uses an SSD, however I hope to update this README once I get access to a computer with a Hard Drive soon. However, I would expect a much larger dropoff in performance due to how
+interleaved I/O requests might increase seek time, given that flash memory doesn't suffer from the same problem.
+
+Overall, the main conclusion I drew from this is that parallelizing reads across cores can be beneficial to a
+point, which of course would depend on the hardware.
 
 ## Running
 
